@@ -1,0 +1,106 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Flow Definition Schema",
+	"description": "Schema for defining AiCode KIT workflows",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string",
+			"description": "Unique workflow identifier"
+		},
+		"name": {
+			"type": "string",
+			"description": "Workflow name"
+		},
+		"description": {
+			"type": "string",
+			"description": "Workflow description"
+		},
+		"version": {
+			"type": "string",
+			"description": "Workflow version",
+			"pattern": "^\\d+\\.\\d+\\.\\d+$"
+		},
+		"steps": {
+			"type": "array",
+			"description": "Workflow steps",
+			"items": {
+				"$ref": "#/definitions/step"
+			},
+			"minItems": 1
+		},
+		"metadata": {
+			"type": "object",
+			"description": "Additional workflow metadata",
+			"properties": {
+				"author": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"updatedAt": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"tags": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	},
+	"required": ["id", "name", "steps"],
+	"definitions": {
+		"step": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Unique step identifier"
+				},
+				"type": {
+					"type": "string",
+					"description": "Step type",
+					"enum": ["analysis", "fix", "test", "deploy", "custom"]
+				},
+				"name": {
+					"type": "string",
+					"description": "Step name"
+				},
+				"config": {
+					"type": "object",
+					"description": "Step configuration",
+					"additionalProperties": true
+				},
+				"dependencies": {
+					"type": "array",
+					"description": "Step dependencies",
+					"items": {
+						"type": "string"
+					}
+				},
+				"enabled": {
+					"type": "boolean",
+					"description": "Whether the step is enabled",
+					"default": true
+				},
+				"timeout": {
+					"type": "number",
+					"description": "Step timeout in milliseconds",
+					"minimum": 0
+				},
+				"retries": {
+					"type": "number",
+					"description": "Number of retries on failure",
+					"minimum": 0,
+					"default": 0
+				}
+			},
+			"required": ["id", "type", "name"]
+		}
+	}
+}
