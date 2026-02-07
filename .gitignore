@@ -4,6 +4,11 @@ build
 .rollup.cache
 node_modules
 
+# AiCode KIT artifacts
+.aicode-cache/
+.aicode-backup/
+aicode-reports/
+
 # editors
 /.vscode/*
 !/.vscode/extensions.json
