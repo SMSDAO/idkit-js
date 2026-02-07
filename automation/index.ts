@@ -22,4 +22,7 @@ export type { AutoTestConfig, TestResult, CoverageReport, TestDetail } from './a
 export { AutoComments } from './auto-comments'
 export type { AutoCommentsConfig, CommentResult } from './auto-comments'
 
+export { Orchestrator } from './orchestrator'
+export type { OrchestratorConfig, OrchestrationResult } from './orchestrator'
+
 export * from './deploy'
