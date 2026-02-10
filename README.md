@@ -6,6 +6,18 @@
 
 IDKit is the toolkit for identity online. With IDKit you can easily interact with the [World ID Protocol](https://worldcoin.org/world-id).
 
+## 🤖 AiCode KIT Integration
+
+This repository now includes **AiCode KIT** - an intelligent automation and development framework that enhances the IDKit development workflow with:
+
+- **AI-Powered Code Analysis** - Intelligent code analysis with pattern detection
+- **Automated Workflows** - Visual workflow builder for automation tasks  
+- **Smart Fixes** - Automatic issue detection and resolution
+- **Comprehensive Testing** - Automated test generation and execution
+- **Seamless Deployment** - One-click deployment to Vercel
+
+📖 [View AiCode KIT Documentation](./docs/README.md) | 🚀 [Quick Start Guide](./docs/guides/quick-start.md)
+
 ## 🚀 Getting started
 
 Integration is very straightforward. Follow the relevant steps below.
