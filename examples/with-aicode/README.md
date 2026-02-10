@@ -2,6 +2,8 @@
 
 This example demonstrates how to use the AiCode KIT automation framework with IDKit-JS.
 
+> **Note:** This is a documentation example showing the AiCode KIT API and usage patterns. The example files are for reference and illustration purposes.
+
 ## Features
 
 - AI-powered code analysis
@@ -10,35 +12,7 @@ This example demonstrates how to use the AiCode KIT automation framework with ID
 - Workflow automation
 - Deployment to Vercel
 
-## Getting Started
-
-### Installation
-
-```bash
-cd examples/with-aicode
-pnpm install
-```
-
-### Running the Example
-
-```bash
-# Run the complete automation workflow
-pnpm aicode:run
-
-# Run analysis only
-pnpm aicode:analyze
-
-# Run auto-fix
-pnpm aicode:fix
-
-# Run tests
-pnpm aicode:test
-
-# Deploy
-pnpm aicode:deploy
-```
-
-## Example Usage
+## Usage Examples
 
 ### 1. Code Analysis
 
@@ -150,20 +124,6 @@ const config: AiCodeConfig = {
 }
 
 export default config
-```
-
-## Scripts
-
-```json
-{
-  "scripts": {
-    "aicode:run": "node src/run-workflow.js",
-    "aicode:analyze": "node src/analyze.js",
-    "aicode:fix": "node src/auto-fix.js",
-    "aicode:test": "node src/auto-test.js",
-    "aicode:deploy": "node src/deploy.js"
-  }
-}
 ```
 
 ## Project Structure
