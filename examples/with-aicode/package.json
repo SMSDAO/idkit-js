@@ -1,0 +1,6 @@
+{
+	"name": "@worldcoin/idkit-aicode-example",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Example demonstrating AiCode KIT automation with IDKit-JS"
+}

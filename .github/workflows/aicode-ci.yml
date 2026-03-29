@@ -1,0 +1,105 @@
+name: AiCode CI
+
+on:
+  push:
+    branches: ['main', 'develop']
+  pull_request:
+    branches: ['main', 'develop']
+
+jobs:
+  aicode-analysis:
+    name: AiCode Analysis & Quality Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: 18
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Run AiCode Analysis
+        run: |
+          echo "Running AiCode analysis..."
+          # TODO: Implement AiCode CLI analysis command
+          # pnpm aicode analyze --path=packages/
+
+      - name: Run AiCode Auto Fix
+        run: |
+          echo "Running AiCode auto-fix..."
+          # TODO: Implement AiCode CLI fix command
+          # pnpm aicode fix --dry-run
+
+  aicode-test:
+    name: AiCode Automated Testing
+    runs-on: ubuntu-latest
+    needs: aicode-analysis
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: 18
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Run AiCode Auto Test
+        run: |
+          echo "Running AiCode automated tests..."
+          # TODO: Implement AiCode CLI test command
+          # pnpm aicode test --coverage
+
+  aicode-deploy:
+    name: AiCode Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: [aicode-analysis, aicode-test]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: 18
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Deploy with AiCode
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          echo "Deploying with AiCode..."
+          # TODO: Implement AiCode CLI deploy command
+          # pnpm aicode deploy --environment=production
